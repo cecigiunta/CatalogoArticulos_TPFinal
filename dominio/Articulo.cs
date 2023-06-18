@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace presentacion
+namespace dominio
 {
-    internal class Articulo
+    public class Articulo
     {
         public int Id { get; set; }
 
@@ -21,11 +22,10 @@ namespace presentacion
 
         public string ImagenUrl { get; set; }
 
-        public int Precio { get; set; }
+        //public SqlMoney Precio { get; set; }
 
-        //Me copio las properties de tipo y debilidad de pokemon para orientarme
-        //public Elemento Tipo { get; set; }
+        public Marca Marca { get; set; }
 
-        //public Elemento Debilidad { get; set; }
+        public Categoria Categoria { get; set; }
     }
 }

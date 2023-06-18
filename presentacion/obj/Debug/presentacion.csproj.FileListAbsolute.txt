@@ -9,3 +9,8 @@ C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\obj\Debug\presentacion
 C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\obj\Debug\presentacion.csproj.CoreCompileInputs.cache
 C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\obj\Debug\presentacion.exe
 C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\obj\Debug\presentacion.pdb
+C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\bin\Debug\dominio.dll
+C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\bin\Debug\negocio.dll
+C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\bin\Debug\dominio.pdb
+C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\bin\Debug\negocio.pdb
+C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\obj\Debug\presentacion.csproj.CopyComplete
