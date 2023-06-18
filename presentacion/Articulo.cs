@@ -13,13 +13,13 @@ namespace presentacion
         public int Id { get; set; }
 
         [DisplayName("Código")]
-        public int Codigo { get; set; }
+        public string Codigo { get; set; }
         public string Nombre { get; set; }
 
         [DisplayName("Descripción")]
         public string Descripcion { get; set; }
 
-        public string UrlImagen { get; set; }
+        public string ImagenUrl { get; set; }
 
         public int Precio { get; set; }
 
