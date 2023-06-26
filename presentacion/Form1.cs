@@ -22,7 +22,16 @@ namespace presentacion
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cargarForm();
+            try
+            {
+                cargarForm();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void dataGridViewArticulos_SelectionChanged(object sender, EventArgs e)
@@ -37,7 +46,7 @@ namespace presentacion
             {
                 pictureBoxArticulo.Load(imagen);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 pictureBoxArticulo.Load("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png");
             }
@@ -61,6 +70,13 @@ namespace presentacion
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FormAlta alta = new FormAlta(); 
+            alta.ShowDialog();
+            cargarForm(); 
         }
     }
 }

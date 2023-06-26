@@ -57,9 +57,23 @@ namespace negocio
         //Agregar nuevo artículo
         public void ejecutarAccion()
         {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
         }
 
-
+        //Agregar parametros: Marca y Categoria
+        public void setearParametro(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
+        }
     }
 }

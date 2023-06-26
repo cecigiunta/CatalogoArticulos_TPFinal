@@ -37,7 +37,12 @@ namespace negocio
                     aux.Nombre = (string)lector["Nombre"];
                     //aux.Precio = (money)lector["Precio"];                   
                     aux.Descripcion = (string)lector["Descripcion"];
-                    aux.ImagenUrl = (string)lector["ImagenUrl"];
+
+                    if (!(lector["ImagenUrl"] is DBNull))
+                    {
+                        aux.ImagenUrl = (string)lector["ImagenUrl"];
+
+                    }
 
 
                     //Marca y Categoria
@@ -62,6 +67,31 @@ namespace negocio
                 throw ex;
             }
 
+        }
+
+        public void agregarArticulo(Articulo nuevoArticulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl)values(" + nuevoArticulo.Codigo + ", '" + nuevoArticulo.Nombre + "', '" + nuevoArticulo.Descripcion + "', @idMarca, @idCategoria, @imagenUrl");
+
+                datos.setearParametro("@idMarca", nuevoArticulo.Marca.Id);
+                datos.setearParametro("@idCategoria", nuevoArticulo.Categoria.Id);
+                datos.setearParametro("@imagenUrl", nuevoArticulo.ImagenUrl);  
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
     }
