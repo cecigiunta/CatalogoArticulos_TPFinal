@@ -35,7 +35,7 @@ namespace negocio
                     Articulo aux = new Articulo();
                     aux.Codigo = (string)lector["Codigo"];
                     aux.Nombre = (string)lector["Nombre"];
-                    //aux.Precio = (money)lector["Precio"];                   
+                    aux.Precio = (decimal)lector["Precio"];
                     aux.Descripcion = (string)lector["Descripcion"];
 
                     if (!(lector["ImagenUrl"] is DBNull))
@@ -75,7 +75,7 @@ namespace negocio
             try
             {
 
-                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl)values(" + nuevoArticulo.Codigo + ", '" + nuevoArticulo.Nombre + "', '" + nuevoArticulo.Descripcion + "', @idMarca, @idCategoria, @imagenUrl");
+                datos.setearConsulta("Insert into ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, ImagenUrl, Precio)values(" + nuevoArticulo.Codigo + ", '" + nuevoArticulo.Nombre + "', '" + nuevoArticulo.Descripcion + "', @idMarca, @idCategoria, @imagenUrl, '" + nuevoArticulo.Precio + "')");  //'" + nuevo.Descripcion + "'
 
                 datos.setearParametro("@idMarca", nuevoArticulo.Marca.Id);
                 datos.setearParametro("@idCategoria", nuevoArticulo.Categoria.Id);
@@ -92,6 +92,35 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public void modificarArticulo(Articulo articuloModificar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("update ARTICULOS set Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, ImagenUrl = @img, Precio = @precio, IdMarca = @idMarca, IdCategoria = @idCategoria Where Id = @id");
+                datos.setearParametro("@codigo", articuloModificar.Codigo);
+                datos.setearParametro("@nombre", articuloModificar.Nombre);
+                datos.setearParametro("@descripcion", articuloModificar.Descripcion);
+                datos.setearParametro("@img", articuloModificar.ImagenUrl);
+                datos.setearParametro("@precio", articuloModificar.Precio);
+                datos.setearParametro("@idMarca", articuloModificar.Marca);
+                datos.setearParametro("@idCategoria", articuloModificar.Categoria);
+                datos.setearParametro("@id", articuloModificar.Id);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
         }
 
     }

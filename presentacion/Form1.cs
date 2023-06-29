@@ -36,8 +36,12 @@ namespace presentacion
 
         private void dataGridViewArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo seleccionado = (Articulo)dataGridViewArticulos.CurrentRow.DataBoundItem;
-            cargarImagen(seleccionado.ImagenUrl);
+            if(dataGridViewArticulos.CurrentRow != null)
+            {
+                Articulo seleccionado = (Articulo)dataGridViewArticulos.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.ImagenUrl);
+
+            }
         }
 
         private void cargarImagen(string imagen)
@@ -61,7 +65,9 @@ namespace presentacion
             {
                 listaArticulos = negocio.listar(); 
 
-                dataGridViewArticulos.DataSource = listaArticulos; 
+                dataGridViewArticulos.DataSource = listaArticulos;
+                dataGridViewArticulos.Columns["ImagenUrl"].Visible = false;
+                dataGridViewArticulos.Columns["Id"].Visible = false;
                 cargarImagen(listaArticulos[0].ImagenUrl);  
             }
             catch (Exception ex)
@@ -78,5 +84,37 @@ namespace presentacion
             alta.ShowDialog();
             cargarForm(); 
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dataGridViewArticulos.CurrentRow.DataBoundItem;
+
+            FormAlta modificar = new FormAlta(seleccionado);
+            modificar.ShowDialog();
+            cargarForm();
+        }
+
+
+        //Filtro rápido, con el textbox|
+        private void textBoxFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltrada;
+            string filtro = textBoxFiltro.Text;
+
+            if(filtro != "")
+            {
+                listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToLower().Contains(textBoxFiltro.Text.ToLower()));
+            }
+            else
+            {
+                listaFiltrada = listaArticulos;
+            }
+            dataGridViewArticulos.DataSource = null;
+            dataGridViewArticulos.DataSource = listaFiltrada;
+            dataGridViewArticulos.Columns["ImagenUrl"].Visible = false;
+        }
+
+
     }
 }

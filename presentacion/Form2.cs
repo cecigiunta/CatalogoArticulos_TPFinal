@@ -14,9 +14,17 @@ namespace presentacion
 {
     public partial class FormAlta : Form
     {
+        private Articulo articulo = null;
         public FormAlta()
         {
             InitializeComponent();
+        }
+
+        public FormAlta(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Articulo";
         }
 
         private void FormAlta_Load(object sender, EventArgs e)
@@ -38,21 +46,37 @@ namespace presentacion
 
         private void btnAltaAceptar_Click(object sender, EventArgs e)
         {
-            Articulo nuevoArticulo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
-                nuevoArticulo.Codigo = textBoxCodigo.Text;
-                nuevoArticulo.Nombre = textBoxNombre.Text;
-                nuevoArticulo.Descripcion = textBoxDescripcion.Text;
-                nuevoArticulo.Marca = (Marca)comboBoxMarca.SelectedItem;
-                nuevoArticulo.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
-                nuevoArticulo.ImagenUrl = textBoxImg.Text;
+                if(articulo == null)
+                {
+                    articulo = new Articulo();
+                }
 
-                negocio.agregarArticulo(nuevoArticulo);
-                MessageBox.Show("Agregado!");
+                articulo.Codigo = textBoxCodigo.Text;
+                articulo.Nombre = textBoxNombre.Text;
+                articulo.Descripcion = textBoxDescripcion.Text;
+                articulo.ImagenUrl = textBoxImg.Text;
+                articulo.Precio = decimal.Parse(textBoxPrecio.Text);
+
+                articulo.Marca = (Marca)comboBoxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
+                
+                
+                if (articulo.Id != 0)
+                {
+                    //negocio.modificarArticulo(articulo);
+                    MessageBox.Show("¡Artículo Modificado!");
+                }
+                else
+                {
+                    negocio.agregarArticulo(articulo);
+                    MessageBox.Show("Agregado!");
+
+                }
                 Close();
-                    }
+            }
             catch (Exception ex)
             {
 
