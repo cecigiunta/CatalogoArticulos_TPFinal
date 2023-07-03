@@ -35,9 +35,12 @@
             this.labelFiltro = new System.Windows.Forms.Label();
             this.textBoxFiltro = new System.Windows.Forms.TextBox();
             this.labelCampo = new System.Windows.Forms.Label();
-            this.textBoxCampo = new System.Windows.Forms.TextBox();
             this.labelCriterio = new System.Windows.Forms.Label();
-            this.textBoxCriterio = new System.Windows.Forms.TextBox();
+            this.labelFiltroAv = new System.Windows.Forms.Label();
+            this.textBoxFiltroAv = new System.Windows.Forms.TextBox();
+            this.btnFiltroAv = new System.Windows.Forms.Button();
+            this.comboBoxCampo = new System.Windows.Forms.ComboBox();
+            this.comboBoxCriterio = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArticulo)).BeginInit();
             this.SuspendLayout();
@@ -106,43 +109,75 @@
             // labelCampo
             // 
             this.labelCampo.AutoSize = true;
-            this.labelCampo.Location = new System.Drawing.Point(340, 452);
+            this.labelCampo.Location = new System.Drawing.Point(346, 452);
             this.labelCampo.Name = "labelCampo";
             this.labelCampo.Size = new System.Drawing.Size(51, 16);
             this.labelCampo.TabIndex = 6;
             this.labelCampo.Text = "Campo";
             // 
-            // textBoxCampo
-            // 
-            this.textBoxCampo.Location = new System.Drawing.Point(436, 452);
-            this.textBoxCampo.Name = "textBoxCampo";
-            this.textBoxCampo.Size = new System.Drawing.Size(100, 22);
-            this.textBoxCampo.TabIndex = 7;
-            // 
             // labelCriterio
             // 
             this.labelCriterio.AutoSize = true;
-            this.labelCriterio.Location = new System.Drawing.Point(343, 499);
+            this.labelCriterio.Location = new System.Drawing.Point(348, 495);
             this.labelCriterio.Name = "labelCriterio";
             this.labelCriterio.Size = new System.Drawing.Size(49, 16);
             this.labelCriterio.TabIndex = 8;
             this.labelCriterio.Text = "Criterio";
             // 
-            // textBoxCriterio
+            // labelFiltroAv
             // 
-            this.textBoxCriterio.Location = new System.Drawing.Point(436, 492);
-            this.textBoxCriterio.Name = "textBoxCriterio";
-            this.textBoxCriterio.Size = new System.Drawing.Size(100, 22);
-            this.textBoxCriterio.TabIndex = 9;
+            this.labelFiltroAv.AutoSize = true;
+            this.labelFiltroAv.Location = new System.Drawing.Point(361, 542);
+            this.labelFiltroAv.Name = "labelFiltroAv";
+            this.labelFiltroAv.Size = new System.Drawing.Size(36, 16);
+            this.labelFiltroAv.TabIndex = 10;
+            this.labelFiltroAv.Text = "Filtro";
+            // 
+            // textBoxFiltroAv
+            // 
+            this.textBoxFiltroAv.Location = new System.Drawing.Point(436, 536);
+            this.textBoxFiltroAv.Name = "textBoxFiltroAv";
+            this.textBoxFiltroAv.Size = new System.Drawing.Size(141, 22);
+            this.textBoxFiltroAv.TabIndex = 11;
+            // 
+            // btnFiltroAv
+            // 
+            this.btnFiltroAv.Location = new System.Drawing.Point(640, 482);
+            this.btnFiltroAv.Name = "btnFiltroAv";
+            this.btnFiltroAv.Size = new System.Drawing.Size(94, 43);
+            this.btnFiltroAv.TabIndex = 12;
+            this.btnFiltroAv.Text = "Buscar";
+            this.btnFiltroAv.UseVisualStyleBackColor = true;
+            this.btnFiltroAv.Click += new System.EventHandler(this.btnFiltroAv_Click);
+            // 
+            // comboBoxCampo
+            // 
+            this.comboBoxCampo.FormattingEnabled = true;
+            this.comboBoxCampo.Location = new System.Drawing.Point(436, 443);
+            this.comboBoxCampo.Name = "comboBoxCampo";
+            this.comboBoxCampo.Size = new System.Drawing.Size(141, 24);
+            this.comboBoxCampo.TabIndex = 13;
+            this.comboBoxCampo.SelectedIndexChanged += new System.EventHandler(this.comboBoxCampo_SelectedIndexChanged);
+            // 
+            // comboBoxCriterio
+            // 
+            this.comboBoxCriterio.FormattingEnabled = true;
+            this.comboBoxCriterio.Location = new System.Drawing.Point(436, 495);
+            this.comboBoxCriterio.Name = "comboBoxCriterio";
+            this.comboBoxCriterio.Size = new System.Drawing.Size(141, 24);
+            this.comboBoxCriterio.TabIndex = 14;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 684);
-            this.Controls.Add(this.textBoxCriterio);
+            this.Controls.Add(this.comboBoxCriterio);
+            this.Controls.Add(this.comboBoxCampo);
+            this.Controls.Add(this.btnFiltroAv);
+            this.Controls.Add(this.textBoxFiltroAv);
+            this.Controls.Add(this.labelFiltroAv);
             this.Controls.Add(this.labelCriterio);
-            this.Controls.Add(this.textBoxCampo);
             this.Controls.Add(this.labelCampo);
             this.Controls.Add(this.textBoxFiltro);
             this.Controls.Add(this.labelFiltro);
@@ -169,9 +204,12 @@
         private System.Windows.Forms.Label labelFiltro;
         private System.Windows.Forms.TextBox textBoxFiltro;
         private System.Windows.Forms.Label labelCampo;
-        private System.Windows.Forms.TextBox textBoxCampo;
         private System.Windows.Forms.Label labelCriterio;
-        private System.Windows.Forms.TextBox textBoxCriterio;
+        private System.Windows.Forms.Label labelFiltroAv;
+        private System.Windows.Forms.TextBox textBoxFiltroAv;
+        private System.Windows.Forms.Button btnFiltroAv;
+        private System.Windows.Forms.ComboBox comboBoxCampo;
+        private System.Windows.Forms.ComboBox comboBoxCriterio;
     }
 }
 

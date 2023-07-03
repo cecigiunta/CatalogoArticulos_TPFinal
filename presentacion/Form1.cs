@@ -25,6 +25,9 @@ namespace presentacion
             try
             {
                 cargarForm();
+                comboBoxCampo.Items.Add("Precio");
+                comboBoxCampo.Items.Add("Nombre");
+                comboBoxCampo.Items.Add("Código");
 
             }
             catch (Exception ex)
@@ -67,7 +70,7 @@ namespace presentacion
 
                 dataGridViewArticulos.DataSource = listaArticulos;
                 dataGridViewArticulos.Columns["ImagenUrl"].Visible = false;
-                dataGridViewArticulos.Columns["Id"].Visible = false;
+                //dataGridViewArticulos.Columns["Id"].Visible = false;
                 cargarImagen(listaArticulos[0].ImagenUrl);  
             }
             catch (Exception ex)
@@ -80,7 +83,7 @@ namespace presentacion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            FormAlta alta = new FormAlta(); 
+            frmAltaArticulo alta = new frmAltaArticulo();
             alta.ShowDialog();
             cargarForm(); 
         }
@@ -90,8 +93,8 @@ namespace presentacion
             Articulo seleccionado;
             seleccionado = (Articulo)dataGridViewArticulos.CurrentRow.DataBoundItem;
 
-            FormAlta modificar = new FormAlta(seleccionado);
-            modificar.ShowDialog();
+            //FormAlta modificar = new FormAlta(seleccionado);
+            //modificar.ShowDialog();
             cargarForm();
         }
 
@@ -115,6 +118,40 @@ namespace presentacion
             dataGridViewArticulos.Columns["ImagenUrl"].Visible = false;
         }
 
+        private void comboBoxCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = comboBoxCampo.SelectedItem.ToString();
 
+            if(opcion == "Precio")  //si es precio, entonces sólo son numeros
+            {
+                comboBoxCriterio.Items.Clear();
+                comboBoxCriterio.Items.Add("Mayor a");
+                comboBoxCriterio.Items.Add("Menor a");
+                comboBoxCriterio.Items.Add("Igual a");
+            } else
+            {
+                comboBoxCriterio.Items.Clear();
+                comboBoxCriterio.Items.Add("Empieza con");
+                comboBoxCriterio.Items.Add("Termina con");
+                comboBoxCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void btnFiltroAv_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            try
+            {
+                string campo = comboBoxCampo.SelectedItem.ToString();
+                string criterio = comboBoxCriterio.SelectedItem.ToString();
+                string filtro = textBoxFiltroAv.Text;
+                dataGridViewArticulos.DataSource = negocio.filtrarConDB(campo, criterio, filtro);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
