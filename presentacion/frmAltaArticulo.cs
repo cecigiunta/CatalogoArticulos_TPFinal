@@ -39,6 +39,7 @@ namespace presentacion
                 nuevoArticulo.Precio = decimal.Parse(textBoxPrecio.Text);
                 nuevoArticulo.Marca = (Marca)comboBoxMarca.SelectedItem;
                 nuevoArticulo.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
+                nuevoArticulo.ImagenUrl = textBoxImg.Text;
 
 
 
@@ -72,6 +73,24 @@ namespace presentacion
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void textBoxImg_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(textBoxImg.Text);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pictureBoxImg.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+
+                pictureBoxImg.Load("https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png");
+            }
         }
     }
 }

@@ -42,6 +42,10 @@
             this.labelCategoria = new System.Windows.Forms.Label();
             this.comboBoxMarca = new System.Windows.Forms.ComboBox();
             this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
+            this.labelImg = new System.Windows.Forms.Label();
+            this.textBoxImg = new System.Windows.Forms.TextBox();
+            this.pictureBoxImg = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImg)).BeginInit();
             this.SuspendLayout();
             // 
             // labelCodigo
@@ -110,7 +114,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(12, 303);
+            this.btnAgregar.Location = new System.Drawing.Point(9, 360);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(115, 33);
             this.btnAgregar.TabIndex = 8;
@@ -120,7 +124,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(198, 303);
+            this.btnCancelar.Location = new System.Drawing.Point(130, 360);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(115, 33);
             this.btnCancelar.TabIndex = 9;
@@ -131,7 +135,7 @@
             // labelMarca
             // 
             this.labelMarca.AutoSize = true;
-            this.labelMarca.Location = new System.Drawing.Point(34, 206);
+            this.labelMarca.Location = new System.Drawing.Point(23, 252);
             this.labelMarca.Name = "labelMarca";
             this.labelMarca.Size = new System.Drawing.Size(45, 16);
             this.labelMarca.TabIndex = 10;
@@ -140,7 +144,7 @@
             // labelCategoria
             // 
             this.labelCategoria.AutoSize = true;
-            this.labelCategoria.Location = new System.Drawing.Point(16, 249);
+            this.labelCategoria.Location = new System.Drawing.Point(13, 288);
             this.labelCategoria.Name = "labelCategoria";
             this.labelCategoria.Size = new System.Drawing.Size(66, 16);
             this.labelCategoria.TabIndex = 11;
@@ -150,7 +154,7 @@
             // 
             this.comboBoxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMarca.FormattingEnabled = true;
-            this.comboBoxMarca.Location = new System.Drawing.Point(112, 198);
+            this.comboBoxMarca.Location = new System.Drawing.Point(112, 244);
             this.comboBoxMarca.Name = "comboBoxMarca";
             this.comboBoxMarca.Size = new System.Drawing.Size(121, 24);
             this.comboBoxMarca.TabIndex = 12;
@@ -159,16 +163,44 @@
             // 
             this.comboBoxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCategoria.FormattingEnabled = true;
-            this.comboBoxCategoria.Location = new System.Drawing.Point(112, 241);
+            this.comboBoxCategoria.Location = new System.Drawing.Point(112, 285);
             this.comboBoxCategoria.Name = "comboBoxCategoria";
             this.comboBoxCategoria.Size = new System.Drawing.Size(121, 24);
             this.comboBoxCategoria.TabIndex = 13;
+            // 
+            // labelImg
+            // 
+            this.labelImg.AutoSize = true;
+            this.labelImg.Location = new System.Drawing.Point(20, 211);
+            this.labelImg.Name = "labelImg";
+            this.labelImg.Size = new System.Drawing.Size(52, 16);
+            this.labelImg.TabIndex = 14;
+            this.labelImg.Text = "Imagen";
+            // 
+            // textBoxImg
+            // 
+            this.textBoxImg.Location = new System.Drawing.Point(112, 208);
+            this.textBoxImg.Name = "textBoxImg";
+            this.textBoxImg.Size = new System.Drawing.Size(121, 22);
+            this.textBoxImg.TabIndex = 15;
+            this.textBoxImg.Leave += new System.EventHandler(this.textBoxImg_Leave);
+            // 
+            // pictureBoxImg
+            // 
+            this.pictureBoxImg.Location = new System.Drawing.Point(271, 28);
+            this.pictureBoxImg.Name = "pictureBoxImg";
+            this.pictureBoxImg.Size = new System.Drawing.Size(277, 290);
+            this.pictureBoxImg.TabIndex = 16;
+            this.pictureBoxImg.TabStop = false;
             // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 348);
+            this.ClientSize = new System.Drawing.Size(582, 405);
+            this.Controls.Add(this.pictureBoxImg);
+            this.Controls.Add(this.textBoxImg);
+            this.Controls.Add(this.labelImg);
             this.Controls.Add(this.comboBoxCategoria);
             this.Controls.Add(this.comboBoxMarca);
             this.Controls.Add(this.labelCategoria);
@@ -186,6 +218,7 @@
             this.Name = "frmAltaArticulo";
             this.Text = "Nuevo Artículo";
             this.Load += new System.EventHandler(this.frmAltaArticulo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,5 +240,8 @@
         private System.Windows.Forms.Label labelCategoria;
         private System.Windows.Forms.ComboBox comboBoxMarca;
         private System.Windows.Forms.ComboBox comboBoxCategoria;
+        private System.Windows.Forms.Label labelImg;
+        private System.Windows.Forms.TextBox textBoxImg;
+        private System.Windows.Forms.PictureBox pictureBoxImg;
     }
 }

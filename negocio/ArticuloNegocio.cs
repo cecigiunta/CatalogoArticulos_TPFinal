@@ -73,11 +73,11 @@ namespace negocio
             try
             {
 
-                datos.setearConsulta("Insert into ARTICULOS(Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria)values('" + nuevoArticulo.Codigo + "','" + nuevoArticulo.Nombre + "','" + nuevoArticulo.Descripcion + "', "+ nuevoArticulo.Precio+" , @idMarca, @idCategoria)");
+                datos.setearConsulta("Insert into ARTICULOS(Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria, ImagenUrl)values('" + nuevoArticulo.Codigo + "','" + nuevoArticulo.Nombre + "','" + nuevoArticulo.Descripcion + "', "+ nuevoArticulo.Precio+" , @idMarca, @idCategoria, @imagenUrl)");
 
                 datos.setearParametro("@idMarca", nuevoArticulo.Marca.Id);
                 datos.setearParametro("@idCategoria", nuevoArticulo.Categoria.Id);
-                //datos.setearParametro("@imagenUrl", nuevoArticulo.ImagenUrl);  
+                datos.setearParametro("@imagenUrl", nuevoArticulo.ImagenUrl);  
 
                 datos.ejecutarAccion();
             }
