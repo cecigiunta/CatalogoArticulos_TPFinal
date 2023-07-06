@@ -16,9 +16,17 @@ namespace presentacion
 {
     public partial class frmAltaArticulo : Form
     {
+        private Articulo articulo = null;
         public frmAltaArticulo()
         {
             InitializeComponent();
+        }
+
+        public frmAltaArticulo(Articulo articulo)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            Text = "Modificar Artículo";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -28,23 +36,33 @@ namespace presentacion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Articulo nuevoArticulo = new Articulo();
             ArticuloNegocio negocio = new ArticuloNegocio();
             
             try
             {
-                nuevoArticulo.Codigo = textBoxCodigo.Text;
-                nuevoArticulo.Nombre = textBoxNombre.Text;
-                nuevoArticulo.Descripcion = textBoxDescrip.Text;
-                nuevoArticulo.Precio = decimal.Parse(textBoxPrecio.Text);
-                nuevoArticulo.Marca = (Marca)comboBoxMarca.SelectedItem;
-                nuevoArticulo.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
-                nuevoArticulo.ImagenUrl = textBoxImg.Text;
+                if(articulo == null)
+                {
+                    articulo = new Articulo();
+                }
+                articulo.Codigo = textBoxCodigo.Text;
+                articulo.Nombre = textBoxNombre.Text;
+                articulo.Descripcion = textBoxDescrip.Text;
+                articulo.Precio = decimal.Parse(textBoxPrecio.Text);
+                articulo.Marca = (Marca)comboBoxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)comboBoxCategoria.SelectedItem;
+                articulo.ImagenUrl = textBoxImg.Text;
 
-
-
-                negocio.agregarArticulo(nuevoArticulo);
+                if(articulo.Id != 0)
+                {
+                negocio.modificarArticulo(articulo);
+                MessageBox.Show("¡Artículo Modificado!");
+                }
+                else
+                {
+                negocio.agregarArticulo(articulo);
                 MessageBox.Show("¡Agregado!");
+                }
+
                 Close();
                 
 
@@ -64,7 +82,24 @@ namespace presentacion
             try
             {
                 comboBoxMarca.DataSource = marcaNegocio.listar();
+                comboBoxMarca.ValueMember = "Id";
+                comboBoxMarca.DisplayMember = "Descripcion";
+
                 comboBoxCategoria.DataSource = categoriaNegocio.listar();
+                comboBoxCategoria.ValueMember = "Id";
+                comboBoxCategoria.DisplayMember = "Descripcion";
+
+                if (articulo != null)
+                {
+                    textBoxCodigo.Text = articulo.Codigo;
+                    textBoxNombre.Text = articulo.Nombre;
+                    textBoxDescrip.Text = articulo.Descripcion;
+                    textBoxPrecio.Text = articulo.Precio.ToString();
+                    textBoxImg.Text = articulo.ImagenUrl;
+                    cargarImagen(articulo.ImagenUrl);
+                    comboBoxMarca.SelectedValue = articulo.Marca.Id;
+                    comboBoxCategoria.SelectedValue = articulo.Categoria.Id;
+                }
 
             }
             catch (Exception ex)

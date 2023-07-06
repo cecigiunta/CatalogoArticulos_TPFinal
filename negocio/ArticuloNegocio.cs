@@ -103,8 +103,8 @@ namespace negocio
                 datos.setearParametro("@descripcion", articuloModificar.Descripcion);
                 datos.setearParametro("@img", articuloModificar.ImagenUrl);
                 datos.setearParametro("@precio", articuloModificar.Precio);
-                datos.setearParametro("@idMarca", articuloModificar.Marca);
-                datos.setearParametro("@idCategoria", articuloModificar.Categoria);
+                datos.setearParametro("@idMarca", articuloModificar.Marca.Id);
+                datos.setearParametro("@idCategoria", articuloModificar.Categoria.Id);
                 datos.setearParametro("@id", articuloModificar.Id);
 
                 datos.ejecutarAccion();

@@ -93,8 +93,8 @@ namespace presentacion
             Articulo seleccionado;
             seleccionado = (Articulo)dataGridViewArticulos.CurrentRow.DataBoundItem;
 
-            //FormAlta modificar = new FormAlta(seleccionado);
-            //modificar.ShowDialog();
+            frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+            modificar.ShowDialog();
             cargarForm();
         }
 
