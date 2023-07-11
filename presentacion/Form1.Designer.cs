@@ -41,6 +41,7 @@
             this.btnFiltroAv = new System.Windows.Forms.Button();
             this.comboBoxCampo = new System.Windows.Forms.ComboBox();
             this.comboBoxCriterio = new System.Windows.Forms.ComboBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxArticulo)).BeginInit();
             this.SuspendLayout();
@@ -109,7 +110,7 @@
             // labelCampo
             // 
             this.labelCampo.AutoSize = true;
-            this.labelCampo.Location = new System.Drawing.Point(346, 452);
+            this.labelCampo.Location = new System.Drawing.Point(373, 452);
             this.labelCampo.Name = "labelCampo";
             this.labelCampo.Size = new System.Drawing.Size(51, 16);
             this.labelCampo.TabIndex = 6;
@@ -118,7 +119,7 @@
             // labelCriterio
             // 
             this.labelCriterio.AutoSize = true;
-            this.labelCriterio.Location = new System.Drawing.Point(348, 495);
+            this.labelCriterio.Location = new System.Drawing.Point(373, 495);
             this.labelCriterio.Name = "labelCriterio";
             this.labelCriterio.Size = new System.Drawing.Size(49, 16);
             this.labelCriterio.TabIndex = 8;
@@ -127,7 +128,7 @@
             // labelFiltroAv
             // 
             this.labelFiltroAv.AutoSize = true;
-            this.labelFiltroAv.Location = new System.Drawing.Point(361, 542);
+            this.labelFiltroAv.Location = new System.Drawing.Point(373, 542);
             this.labelFiltroAv.Name = "labelFiltroAv";
             this.labelFiltroAv.Size = new System.Drawing.Size(36, 16);
             this.labelFiltroAv.TabIndex = 10;
@@ -135,14 +136,14 @@
             // 
             // textBoxFiltroAv
             // 
-            this.textBoxFiltroAv.Location = new System.Drawing.Point(436, 536);
+            this.textBoxFiltroAv.Location = new System.Drawing.Point(462, 536);
             this.textBoxFiltroAv.Name = "textBoxFiltroAv";
             this.textBoxFiltroAv.Size = new System.Drawing.Size(141, 22);
             this.textBoxFiltroAv.TabIndex = 11;
             // 
             // btnFiltroAv
             // 
-            this.btnFiltroAv.Location = new System.Drawing.Point(640, 482);
+            this.btnFiltroAv.Location = new System.Drawing.Point(654, 482);
             this.btnFiltroAv.Name = "btnFiltroAv";
             this.btnFiltroAv.Size = new System.Drawing.Size(94, 43);
             this.btnFiltroAv.TabIndex = 12;
@@ -153,7 +154,7 @@
             // comboBoxCampo
             // 
             this.comboBoxCampo.FormattingEnabled = true;
-            this.comboBoxCampo.Location = new System.Drawing.Point(436, 443);
+            this.comboBoxCampo.Location = new System.Drawing.Point(462, 444);
             this.comboBoxCampo.Name = "comboBoxCampo";
             this.comboBoxCampo.Size = new System.Drawing.Size(141, 24);
             this.comboBoxCampo.TabIndex = 13;
@@ -162,16 +163,27 @@
             // comboBoxCriterio
             // 
             this.comboBoxCriterio.FormattingEnabled = true;
-            this.comboBoxCriterio.Location = new System.Drawing.Point(436, 495);
+            this.comboBoxCriterio.Location = new System.Drawing.Point(462, 495);
             this.comboBoxCriterio.Name = "comboBoxCriterio";
             this.comboBoxCriterio.Size = new System.Drawing.Size(141, 24);
             this.comboBoxCriterio.TabIndex = 14;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(247, 418);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(99, 51);
+            this.btnEliminar.TabIndex = 15;
+            this.btnEliminar.Text = "Eliminar Artículo";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 684);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.comboBoxCriterio);
             this.Controls.Add(this.comboBoxCampo);
             this.Controls.Add(this.btnFiltroAv);
@@ -210,6 +222,7 @@
         private System.Windows.Forms.Button btnFiltroAv;
         private System.Windows.Forms.ComboBox comboBoxCampo;
         private System.Windows.Forms.ComboBox comboBoxCriterio;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }
 

@@ -153,5 +153,28 @@ namespace presentacion
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado;
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Realmente deseas eliminar este artículo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dataGridViewArticulos.CurrentRow.DataBoundItem;
+                    negocio.eliminarArticulo(seleccionado.Id);
+
+                    cargarForm();
+                }     
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
