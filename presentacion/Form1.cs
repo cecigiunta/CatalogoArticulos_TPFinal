@@ -70,7 +70,7 @@ namespace presentacion
 
                 dataGridViewArticulos.DataSource = listaArticulos;
                 dataGridViewArticulos.Columns["ImagenUrl"].Visible = false;
-                //dataGridViewArticulos.Columns["Id"].Visible = false;
+                dataGridViewArticulos.Columns["Id"].Visible = false;
                 cargarImagen(listaArticulos[0].ImagenUrl);  
             }
             catch (Exception ex)
@@ -175,6 +175,15 @@ namespace presentacion
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado;
+            seleccionado = (Articulo)dataGridViewArticulos.CurrentRow.DataBoundItem;
+            frmDetalle detalle = new frmDetalle(seleccionado);  
+            detalle.ShowDialog();
+
         }
     }
 }

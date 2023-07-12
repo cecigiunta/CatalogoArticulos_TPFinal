@@ -15,3 +15,4 @@ C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\bin\Debug\dominio.pdb
 C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\bin\Debug\negocio.pdb
 C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\obj\Debug\presentacion.csproj.CopyComplete
 C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\obj\Debug\presentacion.frmAltaArticulo.resources
+C:\Users\lenovo\Desktop\TPFinalNivel2_Giunta\presentacion\obj\Debug\presentacion.frmDetalle.resources
