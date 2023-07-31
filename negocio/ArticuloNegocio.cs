@@ -36,7 +36,7 @@ namespace negocio
                     aux.Id = (int)lector["Id"];
                     aux.Codigo = (string)lector["Codigo"];
                     aux.Nombre = (string)lector["Nombre"];
-                    aux.Precio = (decimal)lector["Precio"];
+                    aux.Precio = Math.Round((decimal)lector["Precio"],2 );
                     aux.Descripcion = (string)lector["Descripcion"];
 
                     if (!(lector["ImagenUrl"] is DBNull))
@@ -182,7 +182,7 @@ namespace negocio
                     Articulo aux = new Articulo();
                     aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
+                    aux.Precio = Math.Round((decimal)datos.Lector["Precio"], 2);
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
 
                     if (!(datos.Lector["ImagenUrl"] is DBNull))

@@ -99,7 +99,7 @@ namespace presentacion
         }
 
 
-        //Filtro rápido, con el textbox|
+        //Filtro rápido, con el textbox
         private void textBoxFiltro_TextChanged(object sender, EventArgs e)
         {
             List<Articulo> listaFiltrada;
@@ -116,6 +116,7 @@ namespace presentacion
             dataGridViewArticulos.DataSource = null;
             dataGridViewArticulos.DataSource = listaFiltrada;
             dataGridViewArticulos.Columns["ImagenUrl"].Visible = false;
+            dataGridViewArticulos.Columns["Id"].Visible = false;
         }
 
         private void comboBoxCampo_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,6 +143,10 @@ namespace presentacion
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
+                if (validarFiltro())
+                {
+                    return;
+                }
                 string campo = comboBoxCampo.SelectedItem.ToString();
                 string criterio = comboBoxCriterio.SelectedItem.ToString();
                 string filtro = textBoxFiltroAv.Text;
@@ -185,5 +190,47 @@ namespace presentacion
             detalle.ShowDialog();
 
         }
-    }
+
+        //Función para validar el ingreso de sólo numeros
+        private bool soloNumeros(string cadena)
+        {
+            foreach (char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                {
+                    return false;
+                }
+            }
+                return true;
+        }
+
+        private bool validarFiltro()
+        {
+            if (comboBoxCampo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione el campo");
+                return true;
+            }
+            if (comboBoxCriterio.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione el criterio");
+                return true;
+            }
+            if (comboBoxCampo.SelectedItem.ToString() == "Precio")
+            {
+                if (string.IsNullOrEmpty(textBoxFiltroAv.Text))
+                {
+                    MessageBox.Show("Ingrese un precio para filtrar");
+                    return true;
+                }
+
+                if (!soloNumeros(textBoxFiltroAv.Text))
+                {
+                    MessageBox.Show("Por favor, ingrese sólo números");
+                    return true;
+                }
+            }
+            return false;
+        }
+        }
 }

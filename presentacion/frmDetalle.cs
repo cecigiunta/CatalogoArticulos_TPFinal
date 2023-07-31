@@ -35,10 +35,10 @@ namespace presentacion
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
 
-            labelDetalleCodigo.Text = articulo.Codigo;
+            labelDetalleCodigo.Text = "Código: " + articulo.Codigo;
             labelDetalleNombre.Text = articulo.Nombre;
             labelDetalleDescripcion.Text = articulo.Descripcion;
-            labelDetallePrecio.Text = articulo.Precio.ToString();
+            labelDetallePrecio.Text = "$" + articulo.Precio.ToString();
             labelDetalleMarca.Text = articulo.Marca.Descripcion.ToString();
             labelDetalleCategoria.Text = articulo.Categoria.Descripcion.ToString();
 
@@ -68,6 +68,16 @@ namespace presentacion
         private void btnCerrarDet_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void labelDetalleCategoria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelDetallePrecio_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
